@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.util.UUID;
+import com.artysh.backend.entity.enums.UserRole;
 
 @Entity
 @Table(name = "users")
@@ -18,6 +19,10 @@ public class User {
 
     @Column(nullable = false, unique = true)
     private String username;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private UserRole role;
 
     private String avatarUrl;
 
@@ -65,5 +70,13 @@ public class User {
 
     public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }
