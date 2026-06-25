@@ -28,6 +28,10 @@ public class Project {
     @Column(nullable = false)
     private ProjectStatus status;
 
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private User client;
+
     @Column(nullable = false)
     private Instant createdAt;
 
@@ -80,5 +84,13 @@ public class Project {
 
     public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public User getClient() {
+        return client;
+    }
+
+    public void setClient(User client) {
+        this.client = client;
     }
 }
